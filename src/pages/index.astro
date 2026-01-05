@@ -1,16 +1,41 @@
 ---
-
+import "../styles/global.css";
+import { Menu } from "@lucide/astro";
+import { Camera } from "@lucide/astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Will Jackson</title>
+  </head>
+  <body>
+    <div class="hero bg-base-200 min-h-screen">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">
+            Hi, I'm <span class="text-primary">Will</span>.
+          </h1>
+          <p class="py-6">
+            I’m based just outside of London, where I live with my family. I spend my working
+            hours making websites, designing graphics, and generally sorting out
+            creative bits and bobs that need fixing.
+          </p>
+          <p class="pb-6">
+            The rest of the time, I’m usually found taking photos, collecting and adapting recipes in the kitchen, or
+            getting out into the countryside.
+          </p>
+          <ul class="menu menu-horizontal bg-base-200 gap-4">
+            <li class="border rounded-md"><a>Work</a></li>
+            <li class="border rounded-md"><a href="https://www.flickr.com/photos/willmx/">Photography</a></li>
+            <li class="border rounded-md"><a href="https://recipes.willjackson.uk">Recipes</a></li>
+            <li class="border rounded-md"><a href="mailto:will@willjackson.uk">Contact Me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
