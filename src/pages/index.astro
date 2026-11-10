@@ -4,27 +4,36 @@ import Layout from "../layouts/Layout.astro";
 import { projects } from "../data/projects";
 import { skills } from "../data/skills";
 import { contact } from "../data/contact";
+import { caseStudies } from "../data/caseStudies";
+
+const proofPoints = [
+	{ value: "95%", label: "organic search growth over three years at Woven & Woods" },
+	{ value: "800+", label: "product ranges run through one data pipeline" },
+	{ value: "4 → 12", label: "people supported as the business grew" },
+];
 ---
 
 <Layout
-	title="Will Jackson - Web developer and WordPress specialist"
-	description=" Web developer and WordPress specialist based in Surrey. Available for agency and in-house roles. Experienced with WordPress, WooCommerce, Astro and modern frontend workflows."
+	title="Will Jackson - Developer and digital operations lead, Surrey"
+	description="Surrey-based developer building websites, internal tools and automations, and running the systems behind a growing business."
 >
 	<div class="mx-auto w-[min(calc(100%-2rem),1120px)]">
 		<section>
-			<div class="py-16 border-b border-stone-400">
+			<div class="py-16">
 				<h1
 					class="w-full max-w-4xl font-heading text-5xl font-semibold tracking-tight sm:w-auto sm:text-6xl lg:text-7xl"
 				>
-					Web developer and WordPress specialist based in Surrey.
+					Developer and digital operations lead based in Surrey.
 				</h1>
 
 				<p
 					class="w-full mt-6 max-w-4xl text-lg leading-8 text-neutral-600 sm:w-auto"
 				>
-					I build practical, commercially useful websites and tools
-					using WordPress, WooCommerce, PHP, JavaScript and modern
-					frontend workflows. Available for agency and in-house roles.
+					I build websites, internal tools and automations, and keep
+					the systems behind a business running smoothly. For
+					over five years I've been the technical lead at a growing
+					retailer, covering e-commerce, IT, data and the processes
+					that hold them together.
 				</p>
 
 				<div class="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -42,8 +51,172 @@ import { contact } from "../data/contact";
 						Contact me
 					</a>
 				</div>
+
+				<dl class="mt-10 grid max-w-4xl gap-6 sm:grid-cols-3">
+					{
+						proofPoints.map((point) => (
+							<div class="border-l-2 border-teal-900 pl-4">
+								<dt class="sr-only">{point.label}</dt>
+								<dd class="font-heading text-3xl font-bold text-teal-900">
+									{point.value}
+								</dd>
+								<dd class="mt-1 text-neutral-600">{point.label}</dd>
+							</div>
+						))
+					}
+				</dl>
 			</div>
 		</section>
+
+	</div>
+
+	<div class="border-y border-stone-300 bg-stone-50">
+		<div class="mx-auto w-[min(calc(100%-2rem),1120px)]">
+			<!-- Work -->
+			<section id="work" class="py-12">
+				<h2
+					class="font-heading text-4xl font-bold tracking-tight text-teal-900"
+				>
+					Work
+				</h2>
+
+				<h3
+					class="mt-8 font-heading text-3xl font-bold tracking-tight text-neutral-950"
+				>
+					Websites
+				</h3>
+
+				<div
+					id="projects"
+					class="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+				>
+					{
+						projects.map((project) => (
+							<article class="flex h-full flex-col overflow-hidden rounded-lg border border-stone-400 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+								{project.image && project.imageAlt && (
+									<div class="bg-stone-100 p-3">
+										<div class="overflow-hidden rounded-lg border border-stone-400 bg-white">
+											<div class="w-full overflow-hidden bg-stone-100">
+												<img
+													src={project.image.src}
+													alt={project.imageAlt}
+													class="zoomable-img w-full object-cover aspect-video"
+													loading="lazy"
+												/>
+											</div>
+										</div>
+									</div>
+								)}
+
+								<div class="flex flex-1 flex-col p-6">
+									<div class="flex items-start justify-between gap-4">
+										<h4 class="font-heading text-2xl font-bold text-neutral-950">
+											{project.title}
+										</h4>
+
+										{project.status === "in-development" && (
+											<span class="text-nowrap rounded-full bg-stone-100 px-3 py-1 text-xs font-bold text-teal-900">
+												In development
+											</span>
+										)}
+
+										{project.status === "internal" && (
+											<span class="rounded-full bg-stone-100 px-3 py-1 text-xs font-bold text-teal-900">
+												Internal
+											</span>
+										)}
+									</div>
+
+									<p class="mt-2 font-bold text-stone-700">
+										{project.meta}
+									</p>
+
+									<p class="mt-4 text-neutral-600">
+										{project.description}
+									</p>
+
+									<div class="mt-auto flex flex-wrap gap-x-6 pt-5">
+										{project.caseStudyLink && (
+											<a
+												class="font-bold text-teal-900 hover:underline"
+												href={project.caseStudyLink}
+											>
+												Read the case study →
+											</a>
+										)}
+
+										<a
+											class="font-bold text-teal-900 hover:underline"
+											href={project.link}
+											{...(project.link.startsWith("http")
+												? { target: "_blank" }
+												: {})}
+										>
+											{project.linkText} →
+										</a>
+									</div>
+								</div>
+							</article>
+						))
+					}
+				</div>
+
+				<h3 id="tools"
+					class="mt-10 font-heading text-3xl font-bold tracking-tight text-neutral-950"
+				>
+					Tools and systems
+				</h3>
+
+				<div class="mt-6 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+					{
+						caseStudies.map((study) => (
+							<article class="flex h-full flex-col overflow-hidden rounded-lg border border-stone-400 bg-white shadow-sm">
+								{study.image && study.imageAlt && (
+									<div class="bg-stone-100 p-3">
+										<div class="overflow-hidden rounded-lg border border-stone-400 bg-white">
+											<div class="w-full overflow-hidden bg-stone-100">
+												<img
+													src={study.image.src}
+													alt={study.imageAlt}
+													class="zoomable-img w-full object-cover aspect-video"
+													loading="lazy"
+												/>
+											</div>
+										</div>
+									</div>
+								)}
+
+								<div class="flex flex-1 flex-col p-6">
+									<h4 class="font-heading text-2xl font-bold text-neutral-950">
+										{study.title}
+									</h4>
+
+									<p class="mt-2 font-bold text-stone-700">
+										{study.meta}
+									</p>
+
+									<p class="mt-4 text-neutral-600">
+										{study.description}
+									</p>
+
+									{study.link && (
+										<a
+											class="mt-auto pt-5 font-bold text-teal-900 hover:underline"
+											href={study.link}
+										>
+											Read the case study →
+										</a>
+									)}
+								</div>
+							</article>
+						))
+					}
+				</div>
+			</section>
+		</div>
+	</div>
+
+	<div class="mx-auto w-[min(calc(100%-2rem),1120px)]">
 
 		<!-- About -->
 		<section id="about" class="py-12">
@@ -55,34 +228,37 @@ import { contact } from "../data/contact";
 
 			<div class="mt-6 space-y-4 text-lg leading-8 text-neutral-600">
 				<p>
-					I’m a web developer based in Surrey, specialising in
-					WordPress, WooCommerce and practical, maintainable websites.
-				</p>
-				<p>
-					At <a href="https://wovenandwoods.com">Woven & Woods</a>, I
-					work as the technical lead across the company’s website and
-					wider digital systems. My work covers custom WordPress development, WooCommerce, technical SEO, analytics, hosting, performance optimisation and internal tools, supporting a catalogue of just over 1,000 products.
+					At <a href="https://wovenandwoods.com">Woven & Woods</a>, I’m
+					the company’s first and only technical hire. Since 2021 I’ve
+					built and run its websites, product data and IT as the
+					business has grown from one showroom to two, and from four
+					people to twelve. My work covers custom WordPress and
+					WooCommerce development, internal tools and automation,
+					hardware and networking, hosting, technical SEO and
+					analytics, supporting a catalogue of 800+ ranges from more
+					than 60 manufacturers.
 				</p>
 
 				<p>
-					Before moving into web development, I worked in a number of
-					legal roles, which shaped the way I work today: careful,
-					organised and detail-focused. I’m interested in building
-					websites that are fast, easy to manage and genuinely useful
-					- not just for visitors, but for the people who have to run
-					them day to day.
+					Before moving into tech, I spent seven years in law firms,
+					supporting solicitors in commercial litigation, probate
+					disputes and property work. It taught me to be careful,
+					organised and detail-focused, and to understand how
+					professional teams actually work. I build websites and tools
+					that are fast, easy to manage and genuinely useful, not just
+					for visitors but for the people who have to run them day to
+					day.
 				</p>
 
 				<p>
 					Outside of work, I enjoy <a
 						href="https://www.flickr.com/photos/willmx/"
 						>photography</a
-					>, <a href="https://recipes.willjackosn.uk"
+					>, <a href="https://recipes.willjackson.uk"
 						>trying out new recipes</a
-					> and exploring the Surrey countryside. Since 2020, I've also
-					co-hosted a <a href="https://thegallimaufry.show"
-						>history podcast</a
-					>.
+					> and exploring the Surrey countryside. I also co-host a <a
+						href="https://thegallimaufry.show">history podcast</a
+					>, which is currently on a break.
 				</p>
 			</div>
 		</section>
@@ -142,79 +318,6 @@ import { contact } from "../data/contact";
 			</div>
 		</section>
 
-		<!-- Selected work -->
-		<section id="work" class="py-12">
-			<h2
-				class="font-heading text-4xl font-bold tracking-tight text-teal-900"
-			>
-				Selected work
-			</h2>
-
-			<div
-				id="projects"
-				class="mt-8 grid gap-6 md:grid-cols-2 xl:grid-cols-3"
-			>
-				{
-					projects.map((project) => (
-						<article class="flex h-full flex-col overflow-hidden rounded-lg border border-stone-400 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-							{project.image && project.imageAlt && (
-								<div class="bg-stone-100 p-3">
-									<div class="overflow-hidden rounded-lg border border-stone-400 bg-white">
-										<div class="w-full overflow-hidden bg-stone-100">
-											<img
-												src={project.image.src}
-												alt={project.imageAlt}
-												class="zoomable-img w-full object-cover aspect-video"
-												loading="lazy"
-											/>
-										</div>
-									</div>
-								</div>
-							)}
-
-							<div class="flex flex-1 flex-col p-6">
-								<div class="flex items-start justify-between gap-4">
-									<h3 class="font-heading text-2xl font-bold text-neutral-950">
-										{project.title}
-									</h3>
-
-									{project.status === "in-development" && (
-										<span class="text-nowrap rounded-full bg-stone-100 px-3 py-1 text-xs font-bold text-teal-900">
-											In development
-										</span>
-									)}
-
-									{project.status === "internal" && (
-										<span class="rounded-full bg-stone-100 px-3 py-1 text-xs font-bold text-teal-900">
-											Internal
-										</span>
-									)}
-								</div>
-
-								<p class="mt-2 font-bold text-stone-700">
-									{project.meta}
-								</p>
-
-								<p class="mt-4 text-neutral-600">
-									{project.description}
-								</p>
-
-								<a
-									class="mt-auto pt-5 font-bold text-teal-900 hover:underline"
-									href={project.link}
-									{...(project.link.startsWith("http")
-										? { target: "_blank" }
-										: {})}
-								>
-									{project.linkText} →
-								</a>
-							</div>
-						</article>
-					))
-				}
-			</div>
-		</section>
-
 		<!-- Contact -->
 		<section id="contact" class="py-12">
 			<h2
@@ -224,8 +327,8 @@ import { contact } from "../data/contact";
 			</h2>
 
 			<p class="mt-4 text-lg text-neutral-600">
-				If you’d like to talk about a role or project, I’d be glad to
-				hear from you.
+				I’m always happy to talk about websites, systems, automation or
+				anything in between. Email is the best way to reach me.
 			</p>
 
 			<div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">

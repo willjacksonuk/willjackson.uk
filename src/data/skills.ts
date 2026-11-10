@@ -5,22 +5,23 @@ export type Skill = {
 
 export const skills: Skill[] = [
   {
-    title: "Development",
+    title: "Web development",
     skills:
-      "WordPress, WooCommerce, PHP, JavaScript, TypeScript, React, Astro, Node.js, HTML, CSS",
+      "WordPress, WooCommerce, PHP, JavaScript, TypeScript, React, Astro, Node.js, HTML, CSS, ACF Pro, block themes, PHPUnit, DDEV",
   },
   {
-    title: "CMS & content",
-    skills: "ACF Pro, block themes, structured content, custom post types",
+    title: "Systems & IT",
+    skills:
+      "Google Workspace, Jamf (Mac & iOS), networking & Wi-Fi, Linux, Docker, Dokploy, Hetzner, CloudPanel, Cloudflare, Git, GitHub Actions (CI/CD)",
+  },
+  {
+    title: "Automation & AI",
+    skills:
+      "Python, Claude Code, data pipelines & product imports, CSV & database tooling",
   },
   {
     title: "SEO & analytics",
     skills:
-      "Technical SEO, GA4, GTM, Search Console, Core Web Vitals, Meta CAPI",
-  },
-  {
-    title: "Infrastructure & DevOps",
-    skills:
-      "Cloudflare, Git, GitHub, GitHub Actions (CI/CD), Docker, Linux, SSH, CloudPanel",
+      "Technical SEO, structured data, Rank Math, GA4, GTM, Search Console, Core Web Vitals, Meta CAPI",
   },
 ];

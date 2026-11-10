@@ -1,0 +1,129 @@
+---
+// Layout for case study pages in src/pages/work/.
+// Put the page's content in the default slot, using the components in
+// src/components/case-study/ (CaseStudyProse, CaseStudySection, CaseStudyCard).
+import type { ImageMetadata } from "astro";
+import Layout from "./Layout.astro";
+
+export type CaseStudyFact = {
+	label: string;
+	value: string;
+};
+
+interface Props {
+	// Shown as the H1. The page <title> becomes "<title> case study - Will Jackson"
+	// unless pageTitle is set.
+	title: string;
+	pageTitle?: string;
+	// Meta description for search and social sharing.
+	description: string;
+	// Path of this page, e.g. "/work/woven-and-woods/".
+	path: string;
+	// Short introduction under the H1.
+	lede: string;
+	// Key facts shown under the introduction (client, role, stack, year...).
+	facts?: CaseStudyFact[];
+	heroImage?: ImageMetadata;
+	heroImageAlt?: string;
+	// Optional link to the live project, shown at the bottom of the page.
+	link?: string;
+	linkText?: string;
+}
+
+const {
+	title,
+	pageTitle = `${title} case study - Will Jackson`,
+	description,
+	path,
+	lede,
+	facts = [],
+	heroImage,
+	heroImageAlt = "",
+	link,
+	linkText = "Visit the site",
+} = Astro.props;
+
+const canonical = new URL(path, "https://willjackson.uk").href;
+---
+
+<Layout title={pageTitle} description={description} canonical={canonical}>
+	<div class="mx-auto w-[min(calc(100%-2rem),1120px)]">
+		<article>
+			<header class="py-16 border-b border-stone-400">
+				<a class="font-bold text-teal-900 hover:underline" href="/#work">
+					← Back to work
+				</a>
+
+				<p class="mt-8 font-bold text-stone-700">Case study</p>
+
+				<h1
+					class="mt-2 max-w-4xl font-heading text-5xl font-semibold tracking-tight sm:text-6xl"
+				>
+					{title}
+				</h1>
+
+				<p class="mt-6 max-w-3xl text-lg leading-8 text-neutral-600">
+					{lede}
+				</p>
+
+				{
+					facts.length > 0 && (
+						<dl class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+							{facts.map((fact) => (
+								<div>
+									<dt class="font-bold text-teal-900">
+										{fact.label}
+									</dt>
+									<dd class="mt-1 text-neutral-600">
+										{fact.value}
+									</dd>
+								</div>
+							))}
+						</dl>
+					)
+				}
+			</header>
+
+			{
+				heroImage && (
+					<div class="py-12">
+						<div class="overflow-hidden rounded-lg border border-stone-400 bg-white p-3 shadow-sm">
+							<img
+								src={heroImage.src}
+								width={heroImage.width}
+								height={heroImage.height}
+								alt={heroImageAlt}
+								class="zoomable-img w-full rounded-lg"
+							/>
+						</div>
+					</div>
+				)
+			}
+
+			<slot />
+
+			<section class="py-12 border-t border-stone-400">
+				<div class="flex flex-col gap-4 sm:flex-row">
+					{
+						link && (
+							<a
+								class="inline-flex w-full justify-center rounded-lg border border-teal-900 bg-teal-900 px-6 py-3 font-bold text-white transition hover:-translate-y-0.5 hover:shadow-md sm:w-auto"
+								href={link}
+								target="_blank"
+							>
+								{linkText}
+							</a>
+						)
+					}
+
+					<a
+						class="inline-flex w-full justify-center rounded-lg border border-teal-900 px-6 py-3 font-bold text-teal-700 transition hover:-translate-y-0.5 hover:shadow-md sm:w-auto"
+						href="/#work"
+					>
+						Back to work
+					</a>
+				</div>
+			</section>
+		</article>
+	</div>
+</Layout>

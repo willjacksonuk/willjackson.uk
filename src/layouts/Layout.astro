@@ -6,9 +6,10 @@ import { SEO } from "astro-seo";
 interface Props {
     title: string;
     description?: string;
+    canonical?: string;
 }
 
-const { title, description } = Astro.props;
+const { title, description, canonical = "https://willjackson.uk" } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,13 +23,13 @@ const { title, description } = Astro.props;
         <SEO
             title={title}
             description={description}
-            canonical="https://willjackson.uk"
+            canonical={canonical}
             openGraph={{
                 basic: {
                     title: title,
                     type: "website",
                     image: "https://willjackson.uk/wj-opengraph.png",
-                    url: "https://willjackson.uk",
+                    url: canonical,
                 },
                 optional: {
                     description: description ?? "",
@@ -42,7 +43,7 @@ const { title, description } = Astro.props;
                     },
                     {
                         name: "twitter:title",
-                        content: "Will Jackson - Web developer and WordPress specialist",
+                        content: title,
                     },
                     { name: "twitter:card", content: "summary_large_image" },
                     { name: "twitter:description", content: description ?? "" },
@@ -58,7 +59,7 @@ const { title, description } = Astro.props;
                 "name": "Will Jackson",
                 "url": "https://willjackson.uk",
                 "email": "will@willjackson.uk",
-                "jobTitle": "Web Developer",
+                "jobTitle": "Developer and Digital Operations Lead",
                 "sameAs": [
                     "https://github.com/willjacksonuk",
                     "https://linkedin.com/in/wejackson"
@@ -81,7 +82,7 @@ const { title, description } = Astro.props;
                 class="mx-auto flex w-[min(calc(100%-2rem),1120px)] flex-col items-center justify-between gap-3 py-4 sm:flex-row"
             >
                 <a
-                    href="#top"
+                    href="/"
                     class="font-heading text-2xl font-bold tracking-tight text-teal-950"
                 >
                     Will Jackson
@@ -91,13 +92,13 @@ const { title, description } = Astro.props;
                     class="flex flex-wrap justify-center gap-5 text-md font-semibold sm:text-base"
                     aria-label="Primary navigation"
                 >
-                    <a class="transition hover:text-teal-700" href="#about"
+                    <a class="transition hover:text-teal-700" href="/#about"
                         >About</a
                     >
-                    <a class="transition hover:text-teal-700" href="#work"
+                    <a class="transition hover:text-teal-700" href="/#work"
                         >Work</a
                     >
-                    <a class="transition hover:text-teal-700" href="#contact"
+                    <a class="transition hover:text-teal-700" href="/#contact"
                         >Contact</a
                     >
                 </nav>
@@ -115,7 +116,14 @@ const { title, description } = Astro.props;
         >
             <div class="mx-auto w-[min(calc(100%-2rem),1120px)]">
                 © {new Date().getFullYear()} Will Jackson
-                <p class="mt-2">Built with Astro and Tailwind CSS.</p>
+                <p class="mt-2">
+                    Built with Astro and Tailwind CSS.{" "}
+                    <a
+                        class="font-bold text-teal-900 hover:underline"
+                        href="https://github.com/willjacksonuk/willjackson.uk"
+                        >View the source on GitHub</a
+                    >
+                </p>
             </div>
         </footer>
 

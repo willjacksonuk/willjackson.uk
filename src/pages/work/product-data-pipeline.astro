@@ -1,0 +1,141 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import CaseStudyProse from "../../components/case-study/CaseStudyProse.astro";
+import CaseStudySection from "../../components/case-study/CaseStudySection.astro";
+import CaseStudyCards from "../../components/case-study/CaseStudyCards.astro";
+import CaseStudyCard from "../../components/case-study/CaseStudyCard.astro";
+
+import heroImage from "../../assets/images/product-data-pipeline/converter.png";
+import reportImage from "../../assets/images/product-data-pipeline/report.png";
+
+const versions = [
+	{
+		title: "Python script (2022)",
+		text: "Written by hand with pandas and run from the command line. It worked well for me, but nobody else could use it.",
+	},
+	{
+		title: "React app",
+		text: "An early experiment using AI to turn the script into a web app the team could use. It proved the idea, but it was buggy and not fit for everyday use.",
+	},
+	{
+		title: "Plain JavaScript app",
+		text: "Rewritten by hand without React, which was overkill for the job. I wanted to understand every line, which matters when AI is helping to write code.",
+	},
+	{
+		title: "TypeScript (2026)",
+		text: "The current version: the JavaScript app refined, typed and extended with AI assistance, into a polished tool ready for production.",
+	},
+];
+---
+
+<CaseStudyLayout
+	title="Building the product data pipeline"
+	pageTitle="Product data pipeline case study - Will Jackson"
+	description="How I turned a hand-written Python script into a browser-based tool that converts one product spreadsheet into data for the CRM, the website and showroom tickets."
+	path="/work/product-data-pipeline/"
+	lede="One product spreadsheet now feeds the CRM, the website and the showroom tickets, through a browser-based tool that anyone on the team can use. Updating a brand went from most of a working day to an hour or two."
+	facts={[
+		{ label: "Client", value: "Woven & Woods, flooring showrooms in Twickenham and Richmond" },
+		{ label: "Role", value: "Design and development" },
+		{ label: "Stack", value: "TypeScript, Vite, SheetJS, Tailwind CSS, Dokploy" },
+		{ label: "Year", value: "2022 to present" },
+	]}
+	heroImage={heroImage}
+	heroImageAlt="The Product Data Converter, with a spreadsheet selected and Website XML chosen as the output"
+	link="https://data.wovenandwoods.com"
+	linkText="Visit the tool"
+>
+	<CaseStudyProse heading="The brief">
+		<p>
+			Woven & Woods sells 800+ ranges from more than 60 manufacturers, and
+			their details and prices change all the time. Every update used to be
+			copied by hand from a spreadsheet into Simpro, the website and the
+			showroom ticket templates, which took most of a working day per
+			brand.
+		</p>
+		<p>
+			Copying by hand also caused errors. Each of those systems relies on
+			its column headings being exactly right, so a single spelling
+			mistake or a capital letter in the wrong place meant a field
+			silently wasn't recognised. The fix needed to force every update
+			into the same structure, and work for my colleague, the commercial
+			manager, as well as for me.
+		</p>
+	</CaseStudyProse>
+
+	<CaseStudySection
+		heading="One spreadsheet, four outputs"
+		image={reportImage}
+		imageAlt="A conversion report showing rows processed, ranges processed, skipped rows and a warning for an invalid category on row 8"
+	>
+		<p>
+			You upload a spreadsheet, choose an output and download the
+			result. The tool produces a CSV for Simpro, with generated search
+			terms and notes for the sales team, ticket-ready data for the
+			showroom printers, and XML and JSON for the current and new versions
+			of the website, both imported with WP All Import.
+		</p>
+		<p>
+			Along the way it recognises older column names, skips discontinued
+			products, groups colours into ranges and checks every row. Problem
+			rows are skipped with a warning that gives the row number, like the
+			misspelt category in this example, and a report shows exactly what
+			was converted.
+		</p>
+	</CaseStudySection>
+
+	<CaseStudyProse heading="Four versions, each simpler and sturdier">
+		<p>
+			The tool has been rebuilt three times as I learned what the team
+			actually needed:
+		</p>
+		<ol class="space-y-4">
+			{
+				versions.map((version, index) => (
+					<li class="grid gap-1 sm:grid-cols-[2rem_1fr]">
+						<span class="font-heading font-bold text-teal-900">
+							{index + 1}.
+						</span>
+						<span>
+							<strong class="text-neutral-950">
+								{version.title}.
+							</strong>{" "}
+							{version.text}
+						</span>
+					</li>
+				))
+			}
+		</ol>
+	</CaseStudyProse>
+
+	<CaseStudyCards>
+		<CaseStudyCard heading="Built for the whole team">
+			<p>
+				I use Ubuntu and the commercial manager uses macOS, and Python
+				scripts were never going to work for someone who isn't
+				technical. I considered a desktop app built with Rust and Tauri,
+				but a web app could run on Windows, macOS and Linux and build on
+				the HTML and TypeScript I already knew.
+			</p>
+			<p>
+				Spreadsheets are processed entirely in the browser and never
+				uploaded, so cost prices stay on the user's own computer. The
+				tool is hosted with Dokploy.
+			</p>
+		</CaseStudyCard>
+
+		<CaseStudyCard heading="Using AI without losing control">
+			<p>
+				The first AI-assisted version taught me that working code isn't
+				enough if I can't follow it. Since then I've used AI to speed up
+				work on code I understand and can maintain myself, rather than to
+				write code for me.
+			</p>
+			<p>
+				The ticket export also powers the showroom's automated price
+				tickets, so a price change now reaches the CRM, the website and
+				the shop floor from one place.
+			</p>
+		</CaseStudyCard>
+	</CaseStudyCards>
+</CaseStudyLayout>

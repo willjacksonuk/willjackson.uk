@@ -1,0 +1,63 @@
+---
+// Starter for a new case study. Astro doesn't build files that start with an
+// underscore, so copy this to e.g. src/pages/work/my-project.astro, put its
+// screenshots in src/assets/images/my-project/, fill it in, then add
+// caseStudyLink: "/work/my-project/" to the project in src/data/projects.ts.
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import CaseStudyProse from "../../components/case-study/CaseStudyProse.astro";
+import CaseStudySection from "../../components/case-study/CaseStudySection.astro";
+import CaseStudyCards from "../../components/case-study/CaseStudyCards.astro";
+import CaseStudyCard from "../../components/case-study/CaseStudyCard.astro";
+
+import heroImage from "../../assets/images/woven-and-woods.png";
+import firstImage from "../../assets/images/woven-and-woods/catalogue.png";
+import secondImage from "../../assets/images/woven-and-woods/range.png";
+---
+
+<CaseStudyLayout
+	title="Project title"
+	description="One or two sentences for search results and social sharing."
+	path="/work/my-project/"
+	lede="A short introduction: what the project is, who it's for and what it needed to do."
+	facts={[
+		{ label: "Client", value: "Who it was for" },
+		{ label: "Role", value: "What I did" },
+		{ label: "Stack", value: "Main tools and technologies" },
+		{ label: "Year", value: "2026" },
+	]}
+	heroImage={heroImage}
+	heroImageAlt="Describe the screenshot"
+	link="https://example.com"
+>
+	<CaseStudyProse heading="The brief">
+		<p>What the problem was and why it mattered.</p>
+		<p>What the project needed to achieve.</p>
+	</CaseStudyProse>
+
+	<CaseStudySection
+		heading="First thing I built"
+		image={firstImage}
+		imageAlt="Describe the screenshot"
+	>
+		<p>What it does and why it was built this way.</p>
+	</CaseStudySection>
+
+	<CaseStudySection
+		heading="Second thing I built"
+		image={secondImage}
+		imageAlt="Describe the screenshot"
+		reverse
+	>
+		<p>Alternate reverse on each section so the screenshots zigzag.</p>
+	</CaseStudySection>
+
+	<CaseStudyCards>
+		<CaseStudyCard heading="A shorter point">
+			<p>Use cards for details that don't need a screenshot.</p>
+		</CaseStudyCard>
+
+		<CaseStudyCard heading="Another shorter point">
+			<p>Results, tooling, testing or deployment work well here.</p>
+		</CaseStudyCard>
+	</CaseStudyCards>
+</CaseStudyLayout>

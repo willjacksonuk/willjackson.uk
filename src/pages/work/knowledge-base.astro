@@ -1,0 +1,117 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import CaseStudyProse from "../../components/case-study/CaseStudyProse.astro";
+import CaseStudySection from "../../components/case-study/CaseStudySection.astro";
+import CaseStudyCards from "../../components/case-study/CaseStudyCards.astro";
+import CaseStudyCard from "../../components/case-study/CaseStudyCard.astro";
+
+import heroImage from "../../assets/images/knowledge-base/home.png";
+import brandImage from "../../assets/images/knowledge-base/brand-colours.png";
+
+const stages = [
+	{
+		title: "Shared documents",
+		text: "Guides started life as a scattered collection of documents on Google Drive. They existed, but they were hard to find and easy to let go out of date.",
+	},
+	{
+		title: "A docs site (2024)",
+		text: "I rebuilt them as an Astro Starlight site, then added Decap CMS so a colleague could add, edit and remove articles. In practice the team found the GitHub sign-in confusing, the editor unintuitive, and the CMS connection occasionally failed. An early chatbot experiment didn't make it past the trial stage either.",
+	},
+	{
+		title: "Self-hosted Outline (2026)",
+		text: "In summer 2026 we moved to Outline, an open-source wiki with real-time editing and fast search, which staff could use without learning anything new.",
+	},
+];
+---
+
+<CaseStudyLayout
+	title="Building the company knowledge base"
+	pageTitle="Knowledge base case study - Will Jackson"
+	description="How I moved Woven & Woods' company know-how from scattered documents to a self-hosted Outline knowledge base that staff sign into with their existing Google accounts."
+	path="/work/knowledge-base/"
+	lede="A self-hosted knowledge base that puts the company's know-how in one searchable place, from IT and the websites to showroom procedures and the brand, which staff sign into with the accounts they already have."
+	facts={[
+		{ label: "Client", value: "Woven & Woods, flooring showrooms in Twickenham and Richmond" },
+		{ label: "Role", value: "Setup, structure, writing and hosting" },
+		{ label: "Stack", value: "Outline, Docker, Dokploy, Hetzner, Google Workspace" },
+		{ label: "Year", value: "2024 to present" },
+	]}
+	heroImage={heroImage}
+	heroImageAlt="The knowledge base home page, with collections for IT, websites, business development, technical, admin and showrooms"
+>
+	<CaseStudyProse heading="The brief">
+		<p>
+			In a small, growing business, a lot of know-how lives in people's
+			heads: how to set up a new starter's laptop, how to update the
+			website, how the showrooms run day to day. Every question that only
+			one person can answer slows someone else down.
+		</p>
+		<p>
+			The team needed one place to find answers, that the people who know
+			the processes could keep up to date themselves, without needing me
+			to publish changes for them.
+		</p>
+	</CaseStudyProse>
+
+	<CaseStudyProse heading="Three versions, learning from each">
+		<ol class="space-y-4">
+			{
+				stages.map((stage, index) => (
+					<li class="grid gap-1 sm:grid-cols-[2rem_1fr]">
+						<span class="font-heading font-bold text-teal-900">
+							{index + 1}.
+						</span>
+						<span>
+							<strong class="text-neutral-950">{stage.title}.</strong>{" "}
+							{stage.text}
+						</span>
+					</li>
+				))
+			}
+		</ol>
+	</CaseStudyProse>
+
+	<CaseStudySection
+		heading="Organised around how the business works"
+		image={brandImage}
+		imageAlt="The brand colours guide in the knowledge base, with Pantone, RGB, CMYK and hex values"
+	>
+		<p>
+			I structured the knowledge base into collections that match how the
+			business runs (IT, websites, showrooms, admin, business development
+			and technical) and wrote its guides. They cover staff onboarding and
+			offboarding, two-factor sign-in, the CRM, updating the websites,
+			showroom procedures and the brand guidelines.
+		</p>
+		<p>
+			New tools come with their own guide. When I built the outlet shop
+			and the new website, the instructions for listing products and
+			editing pages went straight into the knowledge base.
+		</p>
+	</CaseStudySection>
+
+	<CaseStudyCards>
+		<CaseStudyCard heading="Sign in with the accounts they already have">
+			<p>
+				Staff sign in with their existing Google Workspace accounts, so
+				nobody has another password to remember and there's no separate
+				password-protection layer to maintain. Collections are limited by
+				role, and the directors and commercial manager use it alongside
+				me.
+			</p>
+		</CaseStudyCard>
+
+		<CaseStudyCard heading="One server, several tools">
+			<p>
+				Outline runs in Docker on a Hetzner VPS managed with Dokploy,
+				which supports Outline out of the box. The same server also runs
+				the product data converter and a Kutt URL shortener.
+			</p>
+			<p>
+				I've also connected the knowledge base to Claude, as the first
+				step towards an easy-to-use assistant that can answer the team's
+				questions from their own documentation.
+			</p>
+		</CaseStudyCard>
+	</CaseStudyCards>
+</CaseStudyLayout>

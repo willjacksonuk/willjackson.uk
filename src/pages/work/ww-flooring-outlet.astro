@@ -1,0 +1,105 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import CaseStudyProse from "../../components/case-study/CaseStudyProse.astro";
+import CaseStudySection from "../../components/case-study/CaseStudySection.astro";
+import CaseStudyCards from "../../components/case-study/CaseStudyCards.astro";
+import CaseStudyCard from "../../components/case-study/CaseStudyCard.astro";
+
+import heroImage from "../../assets/images/ww-flooring-outlet/home.png";
+import shopImage from "../../assets/images/ww-flooring-outlet/shop.png";
+import productImage from "../../assets/images/ww-flooring-outlet/product.png";
+---
+
+<CaseStudyLayout
+	title="Building the W&W Flooring Outlet"
+	pageTitle="W&W Flooring Outlet case study - Will Jackson"
+	description="How I built a click-and-collect WooCommerce store on a from-scratch block theme for Woven & Woods' one-off rugs, remnants and end-of-line flooring."
+	path="/work/ww-flooring-outlet/"
+	lede="A click-and-collect shop for one-off rugs, roll ends and end-of-line flooring, giving customers the chance to pick up interesting, quality pieces from a designer flooring retailer at a friendlier price."
+	facts={[
+		{ label: "Client", value: "Woven & Woods, flooring showrooms in Twickenham and Richmond" },
+		{ label: "Role", value: "Design, development and hosting" },
+		{ label: "Stack", value: "WordPress block theme, WooCommerce, Square, CloudPanel" },
+		{ label: "Year", value: "2026" },
+	]}
+	heroImage={heroImage}
+	heroImageAlt="The W&W Flooring Outlet homepage"
+	link="https://outlet.wovenandwoods.com"
+>
+	<CaseStudyProse heading="The brief">
+		<p>
+			Projects and showroom updates leave Woven & Woods with spare rolls of
+			carpet, end-of-line batches of wood and stair runner remnants. They're
+			the same quality as everything in the showrooms, but they were
+			sitting in the warehouse.
+		</p>
+		<p>
+			Woven & Woods is a mid-to-high-end designer retailer, so this
+			couldn't feel like a clearance sale. The outlet needed to present
+			each piece as a find worth having, be easy for showroom staff to
+			keep stocked, and fit around how the showrooms already work.
+		</p>
+	</CaseStudyProse>
+
+	<CaseStudySection
+		heading="A block theme built from scratch"
+		image={shopImage}
+		imageAlt="The outlet shop, with the find, buy and collect steps, category filters and product cards"
+	>
+		<p>
+			The main Woven & Woods site was a child theme of Twenty Twenty-Two at
+			the time, so I built the outlet's block theme from scratch instead.
+			Every template and style rule, in theme.json and style.css, is my
+			own, which meant full control over the design and WooCommerce
+			templates without fighting a parent theme's defaults.
+		</p>
+		<p>
+			It also means the site only loads the CSS it needs, brand colours,
+			type and spacing are defined once for both the editor and the front
+			end, and no parent theme update can change the site unexpectedly.
+			The outlet became the testbed for the approach I then used on the
+			new main Woven & Woods website.
+		</p>
+	</CaseStudySection>
+
+	<CaseStudySection
+		heading="From basket to collection"
+		image={productImage}
+		imageAlt="An outlet product page for a one-off sisal rug, with price, stock and Add to basket button"
+		reverse
+	>
+		<p>
+			Every item is one of a kind and sold exactly as described. Customers
+			can search the stock instantly with FiboSearch, and products also
+			appear in Google Shopping.
+		</p>
+		<p>
+			Checkout runs on Square, the same provider the showrooms already use
+			for card payments and invoices. When someone buys, they're emailed
+			an invitation to collect, straight away if the showroom is open or
+			from the next morning, while a staff Google Group gets the order so
+			someone can prepare it. Everything is collected from the Richmond
+			showroom, which keeps postage out of the picture.
+		</p>
+	</CaseStudySection>
+
+	<CaseStudyCards>
+		<CaseStudyCard heading="Easy for staff to keep stocked">
+			<p>
+				The first batch of stock went in with a CSV import. Since then,
+				the Richmond showroom manager photographs and lists new pieces as
+				they become available, using a step-by-step guide I wrote in the
+				company knowledge base and an in-person walkthrough.
+			</p>
+		</CaseStudyCard>
+
+		<CaseStudyCard heading="Hosting and deployment">
+			<p>
+				The store runs on a Hetzner VPS managed with CloudPanel, which I
+				chose after trialling RunCloud and Ploi, with caching built in.
+				The theme is developed locally and deployed with GitHub Actions,
+				and I used Claude Code as a tool for some of the logic.
+			</p>
+		</CaseStudyCard>
+	</CaseStudyCards>
+</CaseStudyLayout>

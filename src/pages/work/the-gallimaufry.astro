@@ -1,0 +1,104 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import CaseStudyProse from "../../components/case-study/CaseStudyProse.astro";
+import CaseStudySection from "../../components/case-study/CaseStudySection.astro";
+import CaseStudyCards from "../../components/case-study/CaseStudyCards.astro";
+import CaseStudyCard from "../../components/case-study/CaseStudyCard.astro";
+
+import heroImage from "../../assets/images/the-gallimaufry/home.png";
+import episodeImage from "../../assets/images/the-gallimaufry/episode.png";
+import contactImage from "../../assets/images/the-gallimaufry/contact.png";
+---
+
+<CaseStudyLayout
+	title="Building The Gallimaufry website"
+	pageTitle="The Gallimaufry website case study - Will Jackson"
+	description="How I built a fast, self-updating website for The Gallimaufry history podcast in Astro and TypeScript, with episode pages generated from the Buzzsprout API."
+	path="/work/the-gallimaufry/"
+	lede="A fast, low-maintenance website for the history podcast I co-host. It builds itself from the show's Buzzsprout feed, so publishing an episode never means updating the website by hand."
+	facts={[
+		{ label: "Client", value: "The Gallimaufry, a history podcast I co-host" },
+		{ label: "Role", value: "Design, development and hosting" },
+		{ label: "Stack", value: "Astro, TypeScript, Buzzsprout API, Lettermint, Dokploy" },
+		{ label: "Year", value: "2020 to present" },
+	]}
+	heroImage={heroImage}
+	heroImageAlt="The Gallimaufry homepage, with the show's hourglass logo and the latest episodes"
+	link="https://thegallimaufry.show"
+>
+	<CaseStudyProse heading="The brief">
+		<p>
+			Podcast hosts give every show a basic web page, but it doesn't look
+			like the show, it isn't yours to shape, and it does little for
+			search. We wanted a proper home for The Gallimaufry, with a page for
+			every episode that people could find and share.
+		</p>
+		<p>
+			It also had to look after itself. Neither of us wanted another job
+			on release day, so a new episode had to appear on the site without
+			anyone touching it, and the site had to be cheap and simple to host.
+		</p>
+	</CaseStudyProse>
+
+	<CaseStudySection
+		heading="Episodes straight from Buzzsprout"
+		image={episodeImage}
+		imageAlt="An episode page with an audio player, episode notes, artwork and links to listening apps"
+	>
+		<p>
+			When the site builds, it fetches every episode from the Buzzsprout
+			API and turns each one into its own page, with a player, show notes,
+			artwork, a readable date and length, and a clean address made from
+			the title. The build stops with a clear error if two episodes would
+			ever share an address, so a page can never go missing quietly.
+		</p>
+		<p>
+			Each page carries PodcastEpisode structured data and links to Apple
+			Podcasts, Spotify, Amazon Music and RSS. Navigation uses Astro's
+			view transitions, and I fixed a browser quirk that left audio
+			players silent until a full reload after moving between pages.
+		</p>
+	</CaseStudySection>
+
+	<CaseStudySection
+		heading="A contact form that stops spam, not listeners"
+		image={contactImage}
+		imageAlt="The contact form, with name, email and message fields and a Cloudflare Turnstile check"
+		reverse
+	>
+		<p>
+			Every message goes through a short screening before it's sent: a
+			hidden honeypot field, a minimum time to fill in the form, a check
+			for random-string names and messages, and finally Cloudflare
+			Turnstile. The cheap checks run first, so Turnstile is only called
+			when they pass.
+		</p>
+		<p>
+			Spam is dropped silently, so bots learn nothing. But if the check
+			itself can't run, the sender is told and given the show's email
+			address instead, because losing a real listener's message is worse
+			than letting some spam through. Genuine messages are delivered by
+			Lettermint.
+		</p>
+	</CaseStudySection>
+
+	<CaseStudyCards>
+		<CaseStudyCard heading="Privacy by default">
+			<p>
+				Google Analytics doesn't load until a visitor accepts it in the
+				cookie banner, and consent is denied by default, so nothing
+				reaches Google from someone who hasn't said yes.
+			</p>
+		</CaseStudyCard>
+
+		<CaseStudyCard heading="Tested and self-hosted">
+			<p>
+				Vitest covers the episode catalogue, spam screening and the
+				form's browser code, and GitHub Actions runs the tests and a type
+				check on every pull request. The site ships as a Docker image to
+				my own server through Dokploy, with secrets passed in at build
+				time rather than baked into the image.
+			</p>
+		</CaseStudyCard>
+	</CaseStudyCards>
+</CaseStudyLayout>
