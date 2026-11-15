@@ -1,0 +1,108 @@
+---
+import CaseStudyLayout from "../../layouts/CaseStudyLayout.astro";
+import CaseStudyProse from "../../components/case-study/CaseStudyProse.astro";
+import CaseStudySection from "../../components/case-study/CaseStudySection.astro";
+import CaseStudyCards from "../../components/case-study/CaseStudyCards.astro";
+import CaseStudyCard from "../../components/case-study/CaseStudyCard.astro";
+
+import heroImage from "../../assets/images/product-data-converter/converter.png";
+import reportImage from "../../assets/images/product-data-converter/report.png";
+
+const versions = [
+	{
+		title: "Python script (2022)",
+		text: "Written by hand with pandas and run from the command line. It worked well for me, but nobody else could use it.",
+	},
+	{
+		title: "JavaScript app (2025)",
+		text: "Rewritten in JavaScript and HTML, with a simple interface. It ran on a local server, so anyone in the office could use it.",
+	},
+	{
+		title: "TypeScript app (2026)",
+		text: "The current version. I converted the JavaScript app to TypeScript with AI assistance, making it faster, more adaptable and better at handling errors. The rewrite was also an opportunity to include new features to support the planned changes to the website catalogue.",
+	},
+];
+---
+
+<CaseStudyLayout
+	title="Building the product data converter"
+	pageTitle="Product data converter case study - Will Jackson"
+	description="How I turned a hand-written Python script into a browser-based tool that converts one product spreadsheet into data for the CRM, the website and showroom tickets."
+	path="/work/product-data-converter/"
+	lede="One product spreadsheet now feeds the CRM, the website and the showroom tickets, through a browser-based tool that anyone on the team can use. Updating a brand went from several hours spent manually copying data to just the time it takes to run the converter and upload its output."
+	facts={[
+		{ label: "Client", value: "Woven & Woods, flooring showrooms in Twickenham and Richmond" },
+		{ label: "Role", value: "Design and development" },
+		{ label: "Stack", value: "TypeScript, Vite, SheetJS, Tailwind CSS, DaisyUI" },
+		{ label: "Year", value: "2022 to present" },
+	]}
+	heroImage={heroImage}
+	heroImageAlt="The Product Data Converter, with a spreadsheet selected and Website chosen as the output"
+>
+	<CaseStudyProse heading="The brief">
+		<p>
+			Woven & Woods sells almost 1,000 ranges from more than 60 manufacturers, and their details and prices change all the time. Every update used to be copied by hand from a spreadsheet into Simpro, the website and the showroom ticket templates. This was a slow, manual process which could take the best part of a morning for an experienced employee.
+		</p>
+		<p>
+			Copying by hand also caused errors. Each of those systems relies on its column headings being exactly right, so a single spelling mistake or a capital letter in the wrong place meant a field would be filled with NULL or incorrect data. Errors could also result in prices being shown incorrectly, leading to a potentially embarrassing situation when noticed by customers in the showrooms. The fix needed to force every update into the same structure, while reducing the potential for human errors and being easily usable by a non-technical member of staff.
+		</p>
+	</CaseStudyProse>
+
+	<CaseStudySection
+		heading="Turning one data source into three with minimal errors"
+		image={reportImage}
+		imageAlt="A conversion report showing rows processed, ranges processed, skipped rows and a warning for an invalid category on row 8"
+	>
+		<p>
+			The product data converter allows a user to upload a spreadsheet, choose an output and download the result. The tool produces a CSV for Simpro, with generated search terms and notes for the sales team, ticket-ready data for the showroom printers, and JSON for the website, which can be imported with WP All Import.
+		</p>
+		<p>
+			Along the way it recognises older column names, skips discontinued products, groups colours into ranges and checks every row. Problem rows are skipped with a warning that gives the row number, like the misspelt category in this example, and a report shows exactly what was converted.
+		</p>
+		<p>
+			The ticket export also powers the showroom's automated price tickets, so a price change now reaches the CRM, the website and the shop floor simultaneously. This allows the company to operate from a single source of truth throughout the entire process, minimising the risk of human error and reducing the workload throughout the team.</p>
+	</CaseStudySection>
+
+	<CaseStudyProse heading="Three major versions over four years">
+		<p>
+			The tool has been rebuilt twice with the aim of reducing errors and better suiting the needs of a growing company:
+		</p>
+		<ol class="space-y-4">
+			{
+				versions.map((version, index) => (
+					<li class="grid gap-1 sm:grid-cols-[2rem_1fr]">
+						<span class="font-heading font-semibold text-teal-900">
+							{index + 1}.
+						</span>
+						<span>
+							<strong class="text-neutral-950">
+								{version.title}.
+							</strong>{" "}
+							{version.text}
+						</span>
+					</li>
+				))
+			}
+		</ol>
+	</CaseStudyProse>
+
+	<CaseStudyCards>
+		<CaseStudyCard heading="Built for the whole team">
+			<p>
+				The company runs on a mix of Windows, macOS and Ubuntu - and Python scripts were never going to work for someone who isn't familiar with the command line. I considered converting the Python script into a desktop app with tkinter, but this would mean compiling and maintaining for all platforms - whereas a web app only needed a web browser and could be served from a central location. This method also allowed me to build on the HTML and JavaScript I already knew from my experience building websites.
+			</p>
+			<p>
+				Spreadsheets are processed entirely in the browser and never uploaded, so cost prices stay on the user's own computer. The tool is hosted with Dokploy.
+			</p>
+		</CaseStudyCard>
+
+		<CaseStudyCard heading="Using AI without losing control">
+			<p>
+				My early experiments using AI to adapt my Python script produced mixed results: what I saved in time writing code, I quickly lost again finding and fixing mistakes. This was especially problematic when working with languages I wasn't already familiar with.
+			</p>
+			<p>
+				Since then I've learned to use AI more effectively. Rather than relying on a single prompt to build the entire project, I find it much more effective to plan the structure myself and break the project down into individual jobs. I can then review every change myself, ensuring I don't end up troubleshooting a huge, convoluted project at the end.
+			</p>
+		</CaseStudyCard>
+	</CaseStudyCards>
+</CaseStudyLayout>

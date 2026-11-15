@@ -40,14 +40,14 @@ export const projects: Project[] = [
     link: "https://wovenandwoods.com",
   },
   {
-    title: "Product data pipeline",
+    title: "Product data converter",
     kind: "tool",
     meta: "Python / TypeScript / Claude Code",
     summary:
       "A browser-based tool that turns a product spreadsheet into data for the CRM, the website and the showroom tickets - saving hours of time previously spent manually entering data.",
     image: wwDataConverter,
     imageAlt: "Screenshot of the Product Data Converter tool",
-    caseStudy: "/work/product-data-pipeline/",
+    caseStudy: "/work/product-data-converter/",
   },
   {
     title: "Automated showroom tickets",
