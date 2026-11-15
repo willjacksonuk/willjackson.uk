@@ -21,7 +21,7 @@ import settingsImage from "../../assets/images/woven-and-woods/theme-settings.pn
 	facts={[
 		{ label: "Client", value: "Woven & Woods, flooring showrooms in Twickenham and Richmond" },
 		{ label: "Role", value: "Development, content structure, SEO and deployment" },
-		{ label: "Stack", value: "WordPress block theme, ACF, custom plugins, Rank Math PRO, Cloudflare" },
+		{ label: "Stack", value: "WordPress block theme, ACF, Claude Code, custom plugins, Rank Math PRO, Cloudflare, CloudPanel" },
 		{ label: "Year", value: "2026" },
 	]}
 	heroImage={heroImage}
@@ -30,110 +30,77 @@ import settingsImage from "../../assets/images/woven-and-woods/theme-settings.pn
 >
 	<CaseStudyProse heading="The brief">
 		<p>
-			I'd built and run the previous Woven & Woods site, a bespoke
-			WordPress and WooCommerce theme that grew organic search traffic by
-			95% over three years. But the business had outgrown it: a second
-			showroom, a much bigger catalogue, and a team who needed to change
-			things without waiting for me.
+			I'd built and run the previous Woven & Woods site, a bespoke WordPress and WooCommerce theme that grew organic search traffic by 95% over three years. But the business had outgrown it, meaning a new solution was required to serve multiple locations and a growing marketing team.
 		</p>
 		<p>
-			The new site had four jobs: make the whole catalogue easy to browse,
-			turn browsing into showroom visits, keep the search rankings the old
-			site had earned, and be simple for non-technical staff to manage.
+			The new site had four jobs: make the whole catalogue easy to browse, turn browsing into showroom visits, keep the search rankings the old site had earned and be simple for the less technical members of the marketing team to manage without going through me.
 		</p>
 	</CaseStudyProse>
 
 	<CaseStudySection
-		heading="A catalogue built from custom blocks"
+		heading="A catalogue shaped by customers’ needs"
 		image={catalogueImage}
 		imageAlt="The range catalogue, with category tiles, brand and price filters and range cards"
 	>
 		<p>
-			Most of the site runs on two custom plugins. The first adds around
-			40 bespoke blocks, from the range catalogue and its filters to
-			showroom pages with live opening status and the case study listings.
-			The second handles core features such as branded product URLs and
-			enquiry emails.
+			Most of the site runs on two custom plugins. The first adds around 40 bespoke blocks, created by hand and with AI assistance to meet the very specific needs of the business in ways which had historically been hard to achieve with off-the-shelf plugins. The second handles core features such as branded product URLs, enquiry emails and extending the SEO metadata features of Rank Math.
 		</p>
 		<p>
-			The catalogue lets customers narrow the whole collection by
-			category, brand, price and whether a range is on display in a
-			showroom, which is usually the question that decides whether they
-			visit.
+			The catalogue lets customers narrow the whole collection by category, brand, price and whether a range is on display in a showroom. I’d spent a lot of time in the showrooms beforehand talking to customers, designers and people in the trades, and these were the first things they generally wanted to know.
 		</p>
 	</CaseStudySection>
 
 	<CaseStudySection
-		heading="Structured content, not page layouts"
+		heading="Structured content with room to grow"
 		image={rangeImage}
 		imageAlt="A wood flooring range page showing category, format, showroom availability and size"
 		reverse
 	>
 		<p>
-			Content is modelled in Advanced Custom Fields as ranges, colourways,
-			brands, showrooms, case studies and team members, rather than built
-			page by page. Each range page is assembled from that data, so details
-			like format, size and which showroom it's in stay consistent
-			everywhere they appear.
+			Content is modelled in Advanced Custom Fields as ranges, colour variants, brands, showrooms, case studies and team members, rather than built page by page. Each range page is assembled from that data, so details like format, size and which showroom it's in stay consistent everywhere they appear.
 		</p>
 		<p>
-			The catalogue was imported in bulk with WP All Import, and product
-			images are served through Cloudflare's image CDN.
+			The catalogue data was generated using the in-house <a href="/work/product-data-pipeline/">product data pipeline</a> and imported in bulk with WP All Import. Product images are served through Cloudflare's image CDN, using dynamic image transformation to serve the size and quality best suited to the user's device.
 		</p>
 	</CaseStudySection>
 
 	<CaseStudySection
-		heading="Helping customers choose"
+		heading="Turning undecided browsers into showroom leads"
 		image={quizImage}
-		imageAlt="The Find your floor quiz, asking which room the flooring is for"
+		imageAlt="The style quiz, asking which room the flooring is for"
 	>
 		<p>
-			Flooring is a big decision and most customers don't know where to
-			start, so the “Find your floor” quiz asks four quick questions, then
-			shows a room the team has fitted and the ranges they'd recommend.
+			Flooring is a big decision and most customers don't know where to start, so the style quiz asks four quick questions, then shows a room the team has installed and the ranges we would recommend to achieve that finish.
 		</p>
 		<p>
-			From there, Fluent Forms and Fluent Booking handle enquiries and
-			showroom appointments, and Google reviews are pulled in through
-			Trustindex.
+			From there, Fluent Forms and Fluent Booking handle enquiries and showroom appointments, and Google reviews are pulled in through Trustindex.
 		</p>
 	</CaseStudySection>
 
 	<CaseStudySection
-		heading="Built for the people who run it"
+		heading="Built for the marketing team to run without code"
 		image={settingsImage}
 		imageAlt="The Theme Settings screen in WordPress, with tabs for each section of the site"
 		reverse
 	>
 		<p>
-			The site's design system (colour roles, a type scale and spacing)
-			lives in theme.json, so the WordPress editor uses the brand's styles
-			too and new pages look right by default.
+			The site's design system (colour roles, type scale and spacing) lives in theme.json, so the WordPress editor uses the brand's styles too and new pages look right by default.
 		</p>
 		<p>
-			Site-wide copy, featured showrooms and featured case studies are
-			edited in a Theme Settings screen, so staff can update the site
-			without a developer.
+			Site-wide copy, featured showrooms and featured case studies are edited in a Theme Settings screen powered by ACF, so the marketing team can update the site without a developer.
 		</p>
 	</CaseStudySection>
 
 	<CaseStudyCards>
-		<CaseStudyCard heading="Protecting search through the move">
+		<CaseStudyCard heading="Maintaining strong search results">
 			<p>
-				Rank Math PRO handles titles, sitemaps, breadcrumbs and redirects
-				from the old site. Custom structured data marks up showrooms as
-				local businesses, ranges as products, case studies as articles
-				and FAQ sections as FAQs. An llms.txt file helps AI assistants
-				describe the business accurately, and analytics run through
-				Google Tag Manager.
+				Rank Math PRO handles titles, sitemaps, breadcrumbs and redirects from the old site. Custom structured data marks up showrooms as local businesses, ranges as products, case studies as articles and FAQ sections as FAQs. A dynamically generated llms.txt file gives AI assistants an accurate summary of the business, and analytics run through Google Tag Manager.
 			</p>
 		</CaseStudyCard>
 
-		<CaseStudyCard heading="How it's built and shipped">
+		<CaseStudyCard heading="Behind the scenes">
 			<p>
-				Development happens locally in DDEV, with PHPUnit tests. Code
-				lives in GitHub, and GitHub Actions deploys every change to the
-				staging site automatically.
+				Development happens locally in DDEV, with PHPUnit tests. Code lives in GitHub, and GitHub Actions deploys every change to the staging site automatically. The live site runs on a self-managed VPS with CloudPanel, and I handle all maintenance and updates. Moving off a managed WordPress host gave us more control and simpler deployments.
 			</p>
 		</CaseStudyCard>
 	</CaseStudyCards>

@@ -4,6 +4,8 @@ import { defineConfig, fontProviders } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import sitemap from "@astrojs/sitemap";
 
+// Font sources are loaded under their own variable names (--font-*-src) and
+// mapped to Tailwind's font-sans / font-heading / font-icon in global.css.
 export default defineConfig({
   site: "https://willjackson.uk",
   output: "static",
@@ -11,23 +13,23 @@ export default defineConfig({
     {
       provider: fontProviders.google(),
       name: "Barlow",
-      cssVariable: "--font-sans",
+      cssVariable: "--font-body-src",
       weights: ["400", "600"],
       styles: ["normal"],
-      subsets: ["latin"]
+      subsets: ["latin"],
     },
     {
       provider: fontProviders.google(),
-      name: "Albert Sans",
-      cssVariable: "--font-heading",
+      name: "Fraunces",
+      cssVariable: "--font-heading-src",
       weights: ["600"],
       styles: ["normal"],
-      subsets: ["latin"]
+      subsets: ["latin"],
     },
     {
       provider: fontProviders.googleicons(),
       name: "Material Symbols Outlined",
-      cssVariable: "--font-icons",
+      cssVariable: "--font-icons-src",
     },
   ],
 

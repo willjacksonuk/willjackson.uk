@@ -1,9 +1,16 @@
 @import "tailwindcss";
 
+/* Font sources come from astro.config.mjs (--font-*-src). Headings use one
+   weight (600), so use font-semibold, not font-bold, with font-heading. */
 @theme inline {
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-heading), serif;
-  --font-icon: var(--font-google-icons);
+  --font-sans: var(--font-body-src), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-heading-src), ui-serif, Georgia, serif;
+  --font-icon: var(--font-icons-src);
+}
+
+@theme {
+  /* Warm off-white page background */
+  --color-paper: #faf8f4;
 }
 
 .zoom-overlay {
@@ -37,8 +44,4 @@
 
 .zoomable-img {
   cursor: zoom-in;
-}
-
-#about a {
-  text-decoration: underline;
 }

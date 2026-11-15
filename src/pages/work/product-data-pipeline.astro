@@ -14,12 +14,12 @@ const versions = [
 		text: "Written by hand with pandas and run from the command line. It worked well for me, but nobody else could use it.",
 	},
 	{
-		title: "React app",
+		title: "React app (2024)",
 		text: "An early experiment using AI to turn the script into a web app the team could use. It proved the idea, but it was buggy and not fit for everyday use.",
 	},
 	{
-		title: "Plain JavaScript app",
-		text: "Rewritten by hand without React, which was overkill for the job. I wanted to understand every line, which matters when AI is helping to write code.",
+		title: "Plain JavaScript app (2025)",
+		text: "Rewritten by hand in simple JavaScript and HTML. I wanted to understand every line, to avoid the issues we'd had with the previous version.",
 	},
 	{
 		title: "TypeScript (2026)",
@@ -42,8 +42,6 @@ const versions = [
 	]}
 	heroImage={heroImage}
 	heroImageAlt="The Product Data Converter, with a spreadsheet selected and Website XML chosen as the output"
-	link="https://data.wovenandwoods.com"
-	linkText="Visit the tool"
 >
 	<CaseStudyProse heading="The brief">
 		<p>
@@ -93,7 +91,7 @@ const versions = [
 			{
 				versions.map((version, index) => (
 					<li class="grid gap-1 sm:grid-cols-[2rem_1fr]">
-						<span class="font-heading font-bold text-teal-900">
+						<span class="font-heading font-semibold text-teal-900">
 							{index + 1}.
 						</span>
 						<span>

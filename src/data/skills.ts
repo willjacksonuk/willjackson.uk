@@ -12,7 +12,7 @@ export const skills: Skill[] = [
   {
     title: "Systems & IT",
     skills:
-      "Google Workspace, Jamf (Mac & iOS), networking & Wi-Fi, Linux, Docker, Dokploy, Hetzner, CloudPanel, Cloudflare, Git, GitHub Actions (CI/CD)",
+      "Google Workspace, AWS, networking & Wi-Fi, Linux, Docker, Dokploy, Hetzner, CloudPanel, Cloudflare, Git, GitHub Actions (CI/CD)",
   },
   {
     title: "Automation & AI",

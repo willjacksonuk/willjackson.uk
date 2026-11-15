@@ -18,18 +18,18 @@ const { heading, image, imageAlt, reverse = false } = Astro.props;
 	<div class="grid items-center gap-8 lg:grid-cols-2">
 		<div class:list={[reverse && "lg:order-2"]}>
 			<h2
-				class="font-heading text-3xl font-bold tracking-tight text-teal-900"
+				class="font-heading text-3xl font-semibold tracking-tight text-teal-900"
 			>
 				{heading}
 			</h2>
 
-			<div class="mt-6 space-y-4 text-lg leading-8 text-neutral-600">
+			<div class="mt-6 space-y-4 text-lg leading-8 text-neutral-700">
 				<slot />
 			</div>
 		</div>
 
 		<div
-			class="overflow-hidden rounded-lg border border-stone-400 bg-white p-3 shadow-sm"
+			class="overflow-hidden rounded-lg border border-stone-200 bg-white p-3 shadow-sm"
 		>
 			<img
 				src={image.src}
