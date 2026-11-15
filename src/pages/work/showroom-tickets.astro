@@ -6,112 +6,70 @@ import CaseStudyCards from "../../components/case-study/CaseStudyCards.astro";
 import CaseStudyCard from "../../components/case-study/CaseStudyCard.astro";
 
 import ticketImage from "../../assets/images/showroom-tickets/ticket.jpg";
-
-const steps = [
-	{
-		title: "Export",
-		text: "Run the brand's spreadsheet through the product data converter and choose the ticket output.",
-	},
-	{
-		title: "Connect",
-		text: "Open the label template in P-touch Editor and connect it to the exported data.",
-	},
-	{
-		title: "Print",
-		text: "Select the ranges that need new tickets, print them in one batch and stick each label onto a branded ticket card.",
-	},
-];
 ---
 
 <CaseStudyLayout
-	title="Automating showroom price tickets"
+	title="Automating showroom pricing"
 	pageTitle="Showroom tickets case study - Will Jackson"
-	description="How I replaced hand-typed showroom price tickets with label templates filled in automatically from the product data pipeline."
+	description="How I replaced hand-typed showroom price tickets with label templates filled in automatically from the product data converter."
 	path="/work/showroom-tickets/"
 	lede="Every sample in the showrooms carries a ticket with its name, specification and price. They used to be typed up by hand. Now they're printed straight from the same product data that feeds the CRM and the website."
 	facts={[
 		{ label: "Client", value: "Woven & Woods, flooring showrooms in Twickenham and Richmond" },
 		{ label: "Role", value: "Process design, label templates, rollout and training" },
-		{ label: "Stack", value: "Product data converter, Brother P-touch Editor, Brother label printers" },
+		{ label: "Stack", value: "In-house product data converter, Brother P-touch Editor" },
 		{ label: "Year", value: "2022 to present" },
 	]}
 >
 	<CaseStudyProse heading="The brief">
 		<p>
-			Showroom staff typed each ticket up in Word, printed it on A4, cut it
-			out and stuck it to the sample. Re-ticketing a brand after a price
-			change took hours, every retyped price was a chance for a mistake, and
-			tickets looked different from one showroom to the next.
+			Showroom staff typed each ticket up in Word, printed it to an A4 sheet, cut it out and stuck it to the product. Re-ticketing a brand after a price change took hours and every retyped price was a chance for a mistake. The manual nature of the process also meant that tickets could look different depending on which member of staff produced them, which would often look unprofessional and could result in customer confusion.
 		</p>
 		<p>
-			Woven & Woods already kept its prices in suppliers' spreadsheets, so
-			the details were never the problem. The work was in copying them. Making
-			tickets was one of the reasons I built the product data converter, and
-			the first version of the ticket process went live shortly after it.
+			Woven & Woods already kept its prices in a master spreadsheet, so the real problem was getting that data onto the ticket. The answer was to automate as much as possible, so showroom staff could focus on putting the right ticket on the right product. Making tickets was one of the reasons I built the product data converter, and the first version of the ticket process went live shortly after it.
 		</p>
 	</CaseStudyProse>
 
 	<CaseStudySection
-		heading="From spreadsheet to shop floor"
+		heading="Consistent pricing across multiple showrooms"
 		image={ticketImage}
 		imageAlt="A printed showroom ticket for an oak herringbone floor, showing the range name, species, finish, dimensions and price per square metre above the Woven & Woods logo"
 	>
 		<p>
-			The converter has a ticket output that shapes the data for the shop
-			floor rather than for a database. Carpets and runners sold in several
-			widths and colours become a single ticket per range, prices are
-			written as a price per square metre, and wood and LVT sizes are
-			written out with their width, length and thickness.
+			The converter has a ticket output that shapes the data specifically for the software used by the company's label printers. I chose Brother because its label printers work on both Windows and macOS and can batch print from a CSV file.
 		</p>
 		<p>
-			I built the label templates in P-touch Editor, set in Jost, the
-			house font, so each field in the data lands in the right place on the
-			label. The printed labels go onto pre-printed Woven & Woods ticket
-			cards, so every ticket in both showrooms looks the same.
+			Carpets and runners sold in several widths and colours become a single ticket per range, while wood and LVT sizes are written out with their width, length and thickness. Product types are also able to have their own unique attributes, such as species for wood. The specific attributes shown on the tickets were chosen after researching what information customers found most helpful when browsing.
+		</p>
+		<p>
+			I built the label templates in P-touch Editor, using its database feature to make sure each field in the data lands in the right place on the label. The layout was set in the Woven & Woods house font, closely matching the wider brand guidelines to ensure a standard, coherent look. The printed labels go onto standardised cards printed with the Woven & Woods logo, so every ticket in both showrooms looks the same.
 		</p>
 	</CaseStudySection>
 
-	<CaseStudyProse heading="Three steps instead of an afternoon">
-		<ol class="space-y-4">
-			{
-				steps.map((step, index) => (
-					<li class="grid gap-1 sm:grid-cols-[2rem_1fr]">
-						<span class="font-heading font-semibold text-teal-900">
-							{index + 1}.
-						</span>
-						<span>
-							<strong class="text-neutral-950">{step.title}.</strong>{" "}
-							{step.text}
-						</span>
-					</li>
-				))
-			}
+	<CaseStudyProse heading="The improved ticketing process">
+		<ol class="list-decimal space-y-4" type="1">
+			<li>Run the brand's spreadsheet through the product data converter and choose the ticket output.</li>
+			<li>Open the label template in P-touch Editor and connect it to the exported data.</li>
+			<li>Select the ranges that need new tickets, print them in one batch and stick each label onto a branded ticket card.</li>
 		</ol>
 		<p>
-			Re-ticketing a brand now takes minutes rather than hours, and because
-			nothing is retyped, the price on the ticket is the price in the data.
+			Re-ticketing a brand now takes minutes rather than hours, and because nothing is retyped, the price on the ticket will always match the price in the data.
 		</p>
 	</CaseStudyProse>
 
 	<CaseStudyCards>
-		<CaseStudyCard heading="Anyone in the showroom can do it">
+		<CaseStudyCard heading="Rollout and training">
 			<p>
-				I rolled out Brother wireless label printers to the showrooms, and
-				staff now print their own tickets after a price update. I trained
-				the team in person and wrote a step-by-step guide in the company
-				knowledge base, covering installing the software and fonts and
-				printing tickets on both macOS and Windows.
+				I rolled out Brother wireless label printers to both showrooms, trained the staff in person and wrote a step-by-step guide in the company knowledge base. Now, if a ticket is ever wrong, the error can be traced back to the spreadsheet and fixed once for every system.
 			</p>
 		</CaseStudyCard>
 
 		<CaseStudyCard heading="One source of truth">
 			<p>
-				Tickets come from the same spreadsheet as the CRM and the website,
-				so a price change reaches all three from one place. Read more about
-				how that works in the{" "}
+				Tickets come from the same spreadsheet as the CRM and the website, so a price change reaches all three simultaneously. Read more about how that works in the{" "}
 				<a
 					class="font-semibold text-teal-900 underline"
-					href="/work/product-data-pipeline/">product data pipeline case study</a
+					href="/work/product-data-converter/">product data converter case study</a
 				>.
 			</p>
 		</CaseStudyCard>
